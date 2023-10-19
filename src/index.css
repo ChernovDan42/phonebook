@@ -1,4 +1,6 @@
-@import-normalize; /* bring in normalize.css styles */
+@fontsource/inter
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
 
 body {
   margin: 0;
@@ -12,4 +14,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container{
+    max-width: 1158px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a.active{
+  color:rgb(255, 0, 123)
 }

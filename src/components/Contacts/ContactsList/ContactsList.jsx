@@ -1,7 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getContacts, getFilterValue, getIsLoading } from 'redux/selectors';
 import { ContactItem } from './ContactItem';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
+import { fetchContacts } from '../../../redux/contactsOperations';
+import { List } from '@chakra-ui/react';
 
 import css from './css/ContactsList.module.css';
 import { Loader } from 'components/helpers/Loader/Loader';
@@ -20,9 +22,16 @@ export const ContactsList = () => {
   }, [contacts, filterValue]);
 
   return (
-    <ul className={css.list}>
+    <List
+      mt={7}
+      display="flex"
+      flexDirection={'column-reverse'}
+      justifyContent={'flex-end'}
+      className={css.list}
+      h="300px"
+    >
       <ContactItem contacts={visibleContacts} />
       {IsLoading && <Loader />}
-    </ul>
+    </List>
   );
 };

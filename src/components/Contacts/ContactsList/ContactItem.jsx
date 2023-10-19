@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contactsOperations';
+import { ListItem, Text, Button } from '@chakra-ui/react';
 
 import css from './css/ContactItem.module.css';
 import PropTypes from 'prop-types';
@@ -16,20 +17,35 @@ export const ContactItem = ({ contacts }) => {
     <>
       {contacts.map(({ name, number, id }) => {
         return (
-          <li key={id} className={css.contactItem}>
+          <ListItem key={id} mb={3}>
+            {' '}
             <div className={css.contactInfo}>
-              <p>
+              <Text fontSize={'lg'}>
                 {name}: {number}
-              </p>
-              <button
+              </Text>
+              <Button
                 type="button"
                 onClick={() => handleDelete(id)}
                 disabled={IsLoading}
               >
                 Delete
-              </button>
+              </Button>
             </div>
-          </li>
+          </ListItem>
+          // <li key={id} className={css.contactItem}>
+          //   <div className={css.contactInfo}>
+          //     <p>
+          //       {name}: {number}
+          //     </p>
+          //     <button
+          //       type="button"
+          //       onClick={() => handleDelete(id)}
+          //       disabled={IsLoading}
+          //     >
+          //       Delete
+          //     </button>
+          //   </div>
+          // </li>
         );
       })}
     </>
