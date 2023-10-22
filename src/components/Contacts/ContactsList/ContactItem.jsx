@@ -32,20 +32,6 @@ export const ContactItem = ({ contacts }) => {
               </Button>
             </div>
           </ListItem>
-          // <li key={id} className={css.contactItem}>
-          //   <div className={css.contactInfo}>
-          //     <p>
-          //       {name}: {number}
-          //     </p>
-          //     <button
-          //       type="button"
-          //       onClick={() => handleDelete(id)}
-          //       disabled={IsLoading}
-          //     >
-          //       Delete
-          //     </button>
-          //   </div>
-          // </li>
         );
       })}
     </>

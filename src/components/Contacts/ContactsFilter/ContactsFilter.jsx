@@ -1,14 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { filterChange } from 'redux/filterSlice';
-import css from './ContactsFilter.module.css';
 
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-} from '@chakra-ui/react';
+import { FormControl, FormLabel, Input } from '@chakra-ui/react';
 
 export const ContactsFilter = () => {
   const dispatch = useDispatch();

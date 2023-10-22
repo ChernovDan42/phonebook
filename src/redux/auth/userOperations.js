@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -34,7 +34,8 @@ export const login = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      if (e.response.status) toast.error(`There is no user like this`);
+      return rejectWithValue(e.response.status);
     }
   }
 );

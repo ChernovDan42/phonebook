@@ -1,9 +1,5 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/contactsOperations';
-import 'react-toastify/dist/ReactToastify.css';
-import clsx from 'clsx';
-import css from './App.module.css';
 import { AppBar } from './AppBar/AppBar';
 import { Routes, Route } from 'react-router-dom';
 import { refreshUser } from 'redux/auth/userOperations';
@@ -27,6 +23,7 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
+      
       <AppBar />
       <Suspense fallback={<Loader />}>
         <Routes>

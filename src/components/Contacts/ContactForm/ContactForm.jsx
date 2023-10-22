@@ -1,6 +1,6 @@
 import { addContact } from 'redux/contactsOperations';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoading } from 'redux/selectors';
+import { getContacts, getIsLoading } from 'redux/selectors';
 import {
   Box,
   Button,
@@ -11,10 +11,12 @@ import {
   Heading,
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
+import { searchName } from 'components/helpers/js/searchName';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const IsLoading = useSelector(getIsLoading);
+  const contacts = useSelector(getContacts);
 
   const formik = useFormik({
     initialValues: {
@@ -22,6 +24,11 @@ export const ContactForm = () => {
       number: '',
     },
     onSubmit: async values => {
+      if (searchName(contacts, values)) {
+        resetForm();
+        return alert(`${values.name} is already in contacts`);
+      }
+
       dispatch(addContact(values));
       resetForm();
     },

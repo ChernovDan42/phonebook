@@ -12,15 +12,18 @@ import {
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/userOperations';
 
+import { ToastContainer } from 'react-toastify';
+
 const LogIn = () => {
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     onSubmit: ({ email, password }) => {
-      if (email === '' || password === '') {
+      if (!email || !password) {
         return;
       }
       dispatch(login({ email, password }));
@@ -28,10 +31,10 @@ const LogIn = () => {
   });
   return (
     <>
-      <Text fontSize={'xl'} textAlign={'center'}>
-        Please Enter to Your Accaunt
+      <Text fontSize={'xl'} textAlign={'center'} mt={2}>
+        Please Enter to Your Account
       </Text>
-      <Flex bg="dark" align="center" justify="center">
+      <Flex bg="dark" align="center" justify="center" mt={3}>
         <Box bg="dark" p={6} rounded="lg" w={500} border="1px solid white">
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4} align="flex-start">
@@ -69,6 +72,7 @@ const LogIn = () => {
           </form>
         </Box>
       </Flex>
+      <ToastContainer autoClose={2500} />
     </>
   );
 };

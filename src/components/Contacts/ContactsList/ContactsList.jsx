@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getContacts, getFilterValue, getIsLoading } from 'redux/selectors';
 import { ContactItem } from './ContactItem';
-import { useEffect, useMemo } from 'react';
-import { fetchContacts } from '../../../redux/contactsOperations';
+import { useMemo } from 'react';
 import { List } from '@chakra-ui/react';
 
 import css from './css/ContactsList.module.css';

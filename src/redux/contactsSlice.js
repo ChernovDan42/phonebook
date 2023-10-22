@@ -7,12 +7,6 @@ const contactsInitialState = {
   error: null,
 };
 
-const searchName = (state, obj) => {
-  return state.contacts.find(
-    contact => contact.name.toLowerCase() === obj.meta.arg.name.toLowerCase()
-  );
-};
-
 const handlePending = state => ({
   ...state,
   isLoading: true,
@@ -29,38 +23,28 @@ export const contactsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchContacts.pending]: handlePending,
-    [fetchContacts.fulfilled](_, action) {
-      return {
-        contacts: action.payload,
-        isLoading: false,
-        error: null,
-      };
+    [fetchContacts.fulfilled](state, action) {
+      state.contacts = action.payload;
+      state.isLoading = false;
+      state.error = null;
     },
     [fetchContacts.rejected]: handleRejected,
-    [addContact.pending](state, action) {
-      if (searchName(state, action)) {
-        alert(`${action.meta.arg.name} is already in contacts`);
-        throw new SyntaxError(`${action.meta.arg.name} is already in contacts`);
-      }
-      return { ...state, isLoading: true };
+    [addContact.pending](state) {
+      state.isLoading = true;
     },
     [addContact.fulfilled](state, action) {
-      return {
-        isLoading: false,
-        error: null,
-        contacts: [...state.contacts, action.payload],
-      };
+      state.isLoading = false;
+      state.error = null;
+      state.contacts = [...state.contacts, action.payload];
     },
     [addContact.rejected]: handleRejected,
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, action) {
-      return {
-        contacts: state.contacts.filter(
-          contact => contact.id !== action.payload.id
-        ),
-        error: null,
-        isLoading: false,
-      };
+      state.contacts = state.contacts.filter(
+        contact => contact.id !== action.payload.id
+      );
+      state.error = null;
+      state.isLoading = false;
     },
     [deleteContact.rejected]: handleRejected,
   },

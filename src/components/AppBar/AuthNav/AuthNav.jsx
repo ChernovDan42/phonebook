@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { NavLink } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
