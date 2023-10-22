@@ -40,7 +40,7 @@ export const ContactForm = () => {
 
   return (
     <>
-      <Heading mt={10}>PhoneBook</Heading>
+      <Heading>PhoneBook</Heading>
       <Box bg="dark" p={6} rounded="lg" w={500} border="1px solid white" mt={5}>
         <form onSubmit={formik.handleSubmit}>
           <VStack spacing={4} align="flex-start">

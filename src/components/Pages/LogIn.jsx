@@ -11,8 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/userOperations';
-
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -72,7 +71,7 @@ const LogIn = () => {
           </form>
         </Box>
       </Flex>
-      <ToastContainer autoClose={2500} />
+      <Toaster position="top-right" />
     </>
   );
 };

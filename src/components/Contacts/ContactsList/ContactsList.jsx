@@ -29,8 +29,8 @@ export const ContactsList = () => {
       className={css.list}
       h="300px"
     >
-      <ContactItem contacts={visibleContacts} />
       {IsLoading && <Loader />}
+      <ContactItem contacts={visibleContacts} />
     </List>
   );
 };

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logOut, refreshUser } from './userOperations';
-import { toast } from 'react-toastify';
 
 const initialState = {
   user: { name: '', email: '' },

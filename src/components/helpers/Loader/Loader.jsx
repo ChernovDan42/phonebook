@@ -1,3 +1,7 @@
 import css from './Loader.module.css';
 
-export const Loader = () => <span className={css.loader}></span>;
+export const Loader = () => (
+  <div className={css.loaderBox}>
+    <span className={css.loader}></span>
+  </div>
+);

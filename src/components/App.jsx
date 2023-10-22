@@ -23,48 +23,52 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
-      
-      <AppBar />
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <PublicRoute>
-                <Home />
-              </PublicRoute>
-            }
-          ></Route>
+      {!isRefreshingCurrentUser && (
+        <>
+          {' '}
+          <AppBar />
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <PublicRoute>
+                    <Home />
+                  </PublicRoute>
+                }
+              ></Route>
 
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute>
-                <Contacts />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            exact
-            path="login"
-            element={
-              <PublicRoute restricted>
-                <LogIn />
-              </PublicRoute>
-            }
-          ></Route>
-          <Route
-            exact
-            path="register"
-            element={
-              <PublicRoute restricted>
-                <Register />
-              </PublicRoute>
-            }
-          ></Route>
-        </Routes>
-      </Suspense>
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute>
+                    <Contacts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path="login"
+                element={
+                  <PublicRoute restricted>
+                    <LogIn />
+                  </PublicRoute>
+                }
+              ></Route>
+              <Route
+                exact
+                path="register"
+                element={
+                  <PublicRoute restricted>
+                    <Register />
+                  </PublicRoute>
+                }
+              ></Route>
+            </Routes>
+          </Suspense>
+        </>
+      )}
     </>
   );
 };
