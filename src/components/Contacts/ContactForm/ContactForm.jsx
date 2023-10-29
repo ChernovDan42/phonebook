@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { searchName } from 'components/helpers/js/searchName';
+import toast from 'react-hot-toast';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const ContactForm = () => {
     onSubmit: async values => {
       if (searchName(contacts, values)) {
         resetForm();
-        return alert(`${values.name} is already in contacts`);
+        return toast.error(`${values.name} is already in contacts`);
       }
 
       dispatch(addContact(values));
