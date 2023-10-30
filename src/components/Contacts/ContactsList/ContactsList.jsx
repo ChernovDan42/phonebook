@@ -4,7 +4,6 @@ import { ContactItem } from './ContactItem';
 import { useMemo } from 'react';
 import { List } from '@chakra-ui/react';
 
-import css from './css/ContactsList.module.css';
 import { Loader } from 'components/helpers/Loader/Loader';
 
 export const ContactsList = () => {
@@ -26,11 +25,12 @@ export const ContactsList = () => {
       display="flex"
       flexDirection={'column-reverse'}
       justifyContent={'flex-end'}
-      className={css.list}
       h="300px"
     >
       {IsLoading && <Loader />}
-      <ContactItem contacts={visibleContacts} />
+      {visibleContacts.map(({ number, id, name }) => {
+        return <ContactItem key={id} name={name} number={number} id={id} />;
+      })}
     </List>
   );
 };

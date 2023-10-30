@@ -9,7 +9,6 @@ import { lazy, Suspense } from 'react';
 import { Loader } from './helpers/Loader/Loader';
 import { isFetchCurrentUser } from 'redux/auth/selectors';
 
-const Home = lazy(() => import('./Pages/Home'));
 const Contacts = lazy(() => import('./Pages/Contacts'));
 const LogIn = lazy(() => import('./Pages/LogIn'));
 const Register = lazy(() => import('./Pages/Register'));
@@ -25,20 +24,9 @@ export const App = () => {
     <>
       {!isRefreshingCurrentUser && (
         <>
-          {' '}
           <AppBar />
           <Suspense fallback={<Loader />}>
             <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <PublicRoute>
-                    <Home />
-                  </PublicRoute>
-                }
-              ></Route>
-
               <Route
                 path="contacts"
                 element={

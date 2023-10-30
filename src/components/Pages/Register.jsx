@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/userOperations';
+import { Toaster } from 'react-hot-toast';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ const Register = () => {
                   value={formik.values.name}
                   border="1px solid white "
                   _focus={{ border: '1px solid #d5a6bd' }}
+                  pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                  required
                 />
               </FormControl>
               <FormControl>
@@ -57,6 +61,7 @@ const Register = () => {
                   value={formik.values.email}
                   border="1px solid white "
                   _focus={{ border: '1px solid #d5a6bd' }}
+                  required
                 />
               </FormControl>
               <FormControl>
@@ -70,6 +75,9 @@ const Register = () => {
                   value={formik.values.password}
                   border="1px solid white "
                   _focus={{ border: '1px solid #d5a6bd' }}
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$"
+                  title="Password must contain at least one lowercase letter,one uppercase letter,one digit.Minimum length of 8 characters"
+                  required
                 />
               </FormControl>
 
@@ -80,6 +88,7 @@ const Register = () => {
           </form>
         </Box>
       </Flex>
+      <Toaster position="top-right" />
     </>
   );
 };

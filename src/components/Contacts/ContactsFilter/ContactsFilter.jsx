@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { filterChange } from 'redux/filterSlice';
-
 import { FormControl, FormLabel, Input } from '@chakra-ui/react';
 
 export const ContactsFilter = () => {
@@ -19,7 +18,7 @@ export const ContactsFilter = () => {
         autoComplete="off"
         onChange={handleChange}
         w={377}
-        _focus={{ border: '1px solid #d5a6bd', outline: 'none' }}
+        _focus={{ border: '1px solid #d5a6bd' }}
       />
     </FormControl>
   );

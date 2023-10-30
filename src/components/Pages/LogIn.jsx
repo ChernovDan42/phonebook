@@ -22,9 +22,6 @@ const LogIn = () => {
       password: '',
     },
     onSubmit: ({ email, password }) => {
-      if (!email || !password) {
-        return;
-      }
       dispatch(login({ email, password }));
     },
   });
@@ -48,6 +45,7 @@ const LogIn = () => {
                   value={formik.values.email}
                   border="1px solid white "
                   _focus={{ border: '1px solid #d5a6bd' }}
+                  required
                 />
               </FormControl>
               <FormControl>
@@ -61,6 +59,7 @@ const LogIn = () => {
                   value={formik.values.password}
                   border="1px solid white "
                   _focus={{ border: '1px solid #d5a6bd' }}
+                  required
                 />
               </FormControl>
 

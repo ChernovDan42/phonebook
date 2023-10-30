@@ -9,16 +9,6 @@ export const Navigation = () => {
   return (
     <nav className={css.nav}>
       <Breadcrumb fontWeight="medium" fontSize="lg" separator="">
-        <BreadcrumbItem>
-          <BreadcrumbLink
-            as={NavLink}
-            to="/"
-            className={css.navLink}
-            fontSize={30}
-          >
-            Home
-          </BreadcrumbLink>
-        </BreadcrumbItem>
         {isLoggined && (
           <BreadcrumbItem>
             <BreadcrumbLink

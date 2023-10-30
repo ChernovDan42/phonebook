@@ -26,7 +26,6 @@ export const ContactForm = () => {
     },
     onSubmit: async values => {
       if (searchName(contacts, values)) {
-        resetForm();
         return toast.error(`${values.name} is already in contacts`);
       }
 
@@ -63,6 +62,7 @@ export const ContactForm = () => {
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="number">Phone Number</FormLabel>
+
               <Input
                 onChange={formik.handleChange}
                 value={formik.values.number}
@@ -72,11 +72,11 @@ export const ContactForm = () => {
                 variant="filled"
                 border="1px solid white "
                 _focus={{ border: '1px solid #d5a6bd' }}
-                required
                 minLength="10"
                 maxLength="13"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+                required
               />
             </FormControl>
 

@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box} from '@chakra-ui/react';
 import { ContactForm } from 'components/Contacts/ContactForm/ContactForm';
 import { ContactsFilter } from 'components/Contacts/ContactsFilter/ContactsFilter';
 import { ContactsList } from 'components/Contacts/ContactsList/ContactsList';
@@ -16,7 +16,7 @@ const Contacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <Box mt="20px" ml="30px">
+    <Box padding="20px 30px">
       <ContactForm />
 
       <ContactsFilter />
