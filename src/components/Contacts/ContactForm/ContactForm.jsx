@@ -9,6 +9,7 @@ import {
   Input,
   VStack,
   Heading,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { searchName } from 'components/helpers/js/searchName';
@@ -18,6 +19,8 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const IsLoading = useSelector(getIsLoading);
   const contacts = useSelector(getContacts);
+
+  const border = useColorModeValue('1px solid #805AD5', '1px solid white');
 
   const formik = useFormik({
     initialValues: {
@@ -41,7 +44,8 @@ export const ContactForm = () => {
   return (
     <>
       <Heading>PhoneBook</Heading>
-      <Box bg="dark" p={6} rounded="lg" w={500} border="1px solid white" mt={5}>
+
+      <Box bg="dark" p={6} rounded="lg" w={500} border={border} mt={5}>
         <form onSubmit={formik.handleSubmit}>
           <VStack spacing={4} align="flex-start">
             <FormControl>
@@ -53,7 +57,7 @@ export const ContactForm = () => {
                 name="name"
                 type="text"
                 variant="filled"
-                border="1px solid white "
+                border="1px solid white"
                 _focus={{ border: '1px solid #d5a6bd' }}
                 pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"

@@ -1,23 +1,14 @@
 import { useSelector } from 'react-redux';
-import { getContacts, getFilterValue, getIsLoading } from 'redux/selectors';
+import { getIsLoading, selectVisibleContacts } from 'redux/selectors';
 import { ContactItem } from './ContactItem';
-import { useMemo } from 'react';
+
 import { List } from '@chakra-ui/react';
 
 import { Loader } from 'components/helpers/Loader/Loader';
 
 export const ContactsList = () => {
-  const contacts = useSelector(getContacts);
-  const filterValue = useSelector(getFilterValue);
   const IsLoading = useSelector(getIsLoading);
-
-  const visibleContacts = useMemo(() => {
-    const normalized = filterValue.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalized)
-    );
-  }, [contacts, filterValue]);
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
     <List

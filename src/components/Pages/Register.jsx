@@ -7,6 +7,7 @@ import {
   FormLabel,
   Input,
   Text,
+  useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
@@ -15,6 +16,7 @@ import { Toaster } from 'react-hot-toast';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const border = useColorModeValue('1px solid #805AD5', '1px solid white');
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -31,7 +33,7 @@ const Register = () => {
         Create new User
       </Text>
       <Flex bg="dark" align="center" justify="center" mt={3}>
-        <Box bg="dark" p={6} rounded="lg" w={500} border="1px solid white">
+        <Box bg="dark" p={6} rounded="lg" w={500} border={border}>
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4} align="flex-start">
               <FormControl>

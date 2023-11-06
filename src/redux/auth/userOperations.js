@@ -8,7 +8,6 @@ const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
@@ -58,9 +57,6 @@ export const refreshUser = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const persistedToken = state.user.token;
-    if (persistedToken === null) {
-      return rejectWithValue('Unable to fetch user');
-    }
     setAuthHeader(persistedToken);
     try {
       const response = await axios.get('/users/current');
@@ -68,5 +64,14 @@ export const refreshUser = createAsyncThunk(
     } catch (e) {
       return rejectWithValue(e.message);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const state = getState();
+      const persistedToken = state.user.token;
+
+      if (!persistedToken) return false;
+      return true;
+    },
   }
 );

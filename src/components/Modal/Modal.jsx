@@ -12,7 +12,7 @@ import {
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { editContact } from 'redux/contactsOperations';
-import { IconButton } from '@chakra-ui/react';
+import { IconButton, Icon } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 
@@ -65,13 +65,21 @@ export function Modal({ onClose, name, number, id }) {
         position={'relative'}
       >
         <IconButton
-          icon={<CloseIcon />}
+          role="group"
           size={'sm'}
           position="absolute"
           right={2}
           top={2}
           onClick={onClose}
-        />
+        >
+          <Icon
+            as={CloseIcon}
+            _groupHover={{
+              transform: 'rotate(90deg)',
+              transition: 'transform 0.5s',
+            }}
+          />
+        </IconButton>
         <form onSubmit={formik.handleSubmit}>
           <VStack spacing={4} align="flex-start">
             <FormControl>
@@ -84,7 +92,7 @@ export function Modal({ onClose, name, number, id }) {
                 type="text"
                 variant="filled"
                 border="1px solid white "
-                _focus={{ border: '1px solid #d5a6bd' }}
+                _focus={{ border: '1px solid #d5a6bd', color: 'white' }}
                 pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
@@ -100,7 +108,7 @@ export function Modal({ onClose, name, number, id }) {
                 type="tel"
                 variant="filled"
                 border="1px solid white "
-                _focus={{ border: '1px solid #d5a6bd' }}
+                _focus={{ border: '1px solid #d5a6bd', color: 'white' }}
                 required
                 minLength="10"
                 maxLength="13"

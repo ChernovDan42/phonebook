@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar } from './AppBar/AppBar';
 import { Routes, Route } from 'react-router-dom';
 import { refreshUser } from 'redux/auth/userOperations';
-import PublicRoute from './helpers/Routes/PublicRoute';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
-import { lazy, Suspense } from 'react';
-import { Loader } from './helpers/Loader/Loader';
+import RestrictedRoute from './helpers/Routes/RestrictedRoute';
+import { lazy } from 'react';
 import { isFetchCurrentUser } from 'redux/auth/selectors';
+import { Layout } from './Layout/Layout';
 
 const Contacts = lazy(() => import('./Pages/Contacts'));
 const LogIn = lazy(() => import('./Pages/LogIn'));
 const Register = lazy(() => import('./Pages/Register'));
+const Home = lazy(() => import('./Pages/Home'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -24,9 +24,16 @@ export const App = () => {
     <>
       {!isRefreshingCurrentUser && (
         <>
-          <AppBar />
-          <Suspense fallback={<Loader />}>
-            <Routes>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
+              />
               <Route
                 path="contacts"
                 element={
@@ -39,22 +46,61 @@ export const App = () => {
                 exact
                 path="login"
                 element={
-                  <PublicRoute restricted>
+                  <RestrictedRoute>
                     <LogIn />
-                  </PublicRoute>
+                  </RestrictedRoute>
+                }
+              />
+              <Route
+                exact
+                path="register"
+                element={
+                  <RestrictedRoute>
+                    <Register />
+                  </RestrictedRoute>
+                }
+              />
+            </Route>
+          </Routes>
+
+          {/* <Layout />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute>
+                    <Home />
+                  </PrivateRoute>
+                }
+              />
+
+              <Route
+                path="contacts"
+                element={
+                  <PrivateRoute>
+                    <Contacts />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path="login"
+                element={
+                  <RestrictedRoute>
+                    <LogIn />
+                  </RestrictedRoute>
                 }
               ></Route>
               <Route
                 exact
                 path="register"
                 element={
-                  <PublicRoute restricted>
+                  <RestrictedRoute>
                     <Register />
-                  </PublicRoute>
+                  </RestrictedRoute>
                 }
               ></Route>
-            </Routes>
-          </Suspense>
+            </Routes> */}
         </>
       )}
     </>
