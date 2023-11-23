@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactsOperations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 import {
   ListItem,
   Text,
@@ -10,7 +10,7 @@ import {
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 
 import PropTypes from 'prop-types';
-import { getIsLoading } from 'redux/selectors';
+import { getIsLoading } from 'redux/contacts/selectors';
 import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 

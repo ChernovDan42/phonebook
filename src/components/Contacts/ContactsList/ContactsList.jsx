@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getIsLoading, selectVisibleContacts } from 'redux/selectors';
+import { getIsLoading, selectVisibleContacts } from 'redux/contacts/selectors';
 import { ContactItem } from './ContactItem';
 
 import { List } from '@chakra-ui/react';

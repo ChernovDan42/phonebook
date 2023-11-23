@@ -29,9 +29,7 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(logOut.fulfilled, state => {
-        // state.user = { name: '', email: '' };
-        // state.token = null;
-        // state.isLoggedIn = false;
+       
         return initialState;
       })
       .addCase(refreshUser.pending, state => {

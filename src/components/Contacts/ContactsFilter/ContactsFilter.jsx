@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterChange } from 'redux/filterSlice';
+import { filterChange } from 'redux/filter/filterSlice';
 import { FormControl, FormLabel, Input, Icon, Box } from '@chakra-ui/react';
 import { RiUserSearchLine } from 'react-icons/ri';
 

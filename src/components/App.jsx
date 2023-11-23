@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { refreshUser } from 'redux/auth/userOperations';
 import PrivateRoute from './helpers/Routes/PrivateRoute';
 import RestrictedRoute from './helpers/Routes/RestrictedRoute';
-import { lazy } from 'react';
 import { isFetchCurrentUser } from 'redux/auth/selectors';
 import { Layout } from './Layout/Layout';
 
@@ -61,46 +60,8 @@ export const App = () => {
                 }
               />
             </Route>
+            <Route path="*" element={<Navigate to={'/'} />} />
           </Routes>
-
-          {/* <Layout />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <PrivateRoute>
-                    <Home />
-                  </PrivateRoute>
-                }
-              />
-
-              <Route
-                path="contacts"
-                element={
-                  <PrivateRoute>
-                    <Contacts />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                exact
-                path="login"
-                element={
-                  <RestrictedRoute>
-                    <LogIn />
-                  </RestrictedRoute>
-                }
-              ></Route>
-              <Route
-                exact
-                path="register"
-                element={
-                  <RestrictedRoute>
-                    <Register />
-                  </RestrictedRoute>
-                }
-              ></Route>
-            </Routes> */}
         </>
       )}
     </>

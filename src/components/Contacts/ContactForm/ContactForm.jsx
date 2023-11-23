@@ -1,6 +1,6 @@
-import { addContact } from 'redux/contactsOperations';
+import { addContact } from 'redux/contacts/contactsOperations';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, getIsLoading } from 'redux/selectors';
+import { getContacts, getIsLoading } from 'redux/contacts/selectors';
 import {
   Box,
   Button,

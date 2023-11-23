@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { editContact } from 'redux/contactsOperations';
+import { editContact } from 'redux/contacts/contactsOperations';
 import { IconButton, Icon } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
